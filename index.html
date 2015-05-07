@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Customer</title>
+
+    <link href="css/datepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap-datepicker.ru.min.js" charset="UTF-8"></script>
+    <script src="js/jquery.validate.min.js"></script>
+
+    <script src="js/jquery.jqplot.min.js"></script>
+    <script src="js/jqplot_plugins/jqplot.barRenderer.min.js"></script>
+    <script src="js/jqplot_plugins/jqplot.pieRenderer.min.js"></script>
+    <script src="js/jqplot_plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script src="js/jqplot_plugins/jqplot.pointLabels.min.js"></script>
+
+
+    <script src="js/customer.js"></script>
+
+</head>
+
+<body>
+<div style="margin: 10px;" >
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab">Главная</a></li>
+    <li><a href="#report" data-toggle="tab">Отчёт</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="home">
+        <br>
+        <button type="button" class="btn btn-primary" id="add_customer">Добавить клиента</button>
+
+        <br>
+
+        <table id="table_customers" class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Время получения клиента</th>
+                <th>Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane" id="report">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input style="width: 220px" type="text" class="form-control"
+                       id="number_days"
+                       name="number_days"
+                       placeholder="Количество дней в периоде">
+            </div>
+            <button type="button" class="btn btn-default" id="show_conversion">Показать конверсию</button>
+        </form>
+        <!-- График -->
+        <div id="chartdiv" style=" width:800px; height:350px;"></div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="customer_edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label for="fio">ФИО</label>
+                        <input type="text" class="form-control" id="fio" name="fio">
+                    </div>
+					<div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Статус</label>
+                        <select id="status" name="status" class="form-control">
+                            <option value="1">новый</option>
+                            <option value="2">зарегистрирован</option>
+                            <option value="3">отказался</option>
+                            <option value="4">недоступен</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="date_create">Время получения клиента</label>
+                        <input type="text" class="form-control" id="date_create" name="date_create">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="save_customers">Сохранить</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+</body>
+</html>
